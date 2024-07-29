@@ -1,0 +1,5 @@
+suites:
+    main:
+        namespace: Lamesya\Freshdesk
+        psr4_prefix: Lamesya\Freshdesk
+        src_path: src

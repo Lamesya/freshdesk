@@ -1,0 +1,39 @@
+{
+    "name": "lamesya/freshdesk",
+    "description": "Freshdesk API client for PHP and/or Laravel",
+    "type": "library",
+    "keywords": ["freshdesk", "api", "client", "laravel"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Joel Bije",
+            "email": "kumag223@gmail.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "~7.0",
+        "illuminate/support": "^10.0",
+        "laravel/helpers": "^1.0",
+        "php": ">=8.1"
+    },
+    "require-dev": {
+        "phpspec/phpspec": "^7.1",
+        "symfony/var-dumper": "^2.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Lamesya\\Freshdesk\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Lamesya\\Freshdesk\\FreshdeskServiceProvider"
+            ],
+            "aliases": {
+                "Freshdesk": "Lamesya\\Freshdesk\\FreshdeskFacade"
+            }
+        }
+    },
+    "minimum-stability": "dev"
+}
