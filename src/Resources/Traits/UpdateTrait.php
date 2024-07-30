@@ -16,11 +16,6 @@ trait UpdateTrait
     abstract protected function endpoint($end = null);
 
     /**
-     * @return Lamesya\Freshdesk\Freshdesk
-     */
-    abstract protected function api();
-
-    /**
      * Update a resource
      * 
      * @param int $id
@@ -29,6 +24,6 @@ trait UpdateTrait
      */
     public function update($id, array $data)
     {
-        return $this->api()->put($this->endpoint($id), $data);
+        return $this->request->put($this->endpoint($id), $data);
     }
 }

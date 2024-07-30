@@ -6,6 +6,7 @@ use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Psr7\Request as GuzzleRequest;
 use GuzzleHttp\Exception\BadResponseException;
 use GuzzleHttp\RequestOptions;
+use Symfony\Component\VarDumper\VarDumper;
 
 class FreshdeskClient implements Client
 {
@@ -102,7 +103,7 @@ class FreshdeskClient implements Client
             $response = $e->getResponse();
         }
 
-        return json_decode($response->getBody(), true);
+        return json_decode($response->getBody());
     }
 
     /**

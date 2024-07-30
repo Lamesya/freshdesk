@@ -16,18 +16,13 @@ trait CreateTrait
     abstract protected function endpoint($end = null);
 
     /**
-     * @return Lamesya\Freshdesk\Freshdesk
-     */
-    abstract protected function api();
-
-    /**
      * Create a resource
      * 
      * @param array $data
-     * @return array|null
+     * @return Response
      */
     public function create(array $data)
     {
-        return $this->api()->post($this->endpoint(), $data);
+        return $this->request->post($this->endpoint(), $data);
     }
 }

@@ -16,11 +16,6 @@ trait DeleteTrait
     abstract protected function endpoint($end = null);
 
     /**
-     * @return Lamesya\Freshdesk\Freshdesk
-     */
-    abstract protected function api();
-
-    /**
      * Update a resource
      * 
      * @param int $id
@@ -29,6 +24,6 @@ trait DeleteTrait
      */
     public function delete($id)
     {
-        return $this->api()->delete($this->endpoint($id));
+        return $this->request->delete($this->endpoint($id));
     }
 }

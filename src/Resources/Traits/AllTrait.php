@@ -2,6 +2,8 @@
 
 namespace Lamesya\Freshdesk\Resources\Traits;
 
+use Symfony\Component\VarDumper\VarDumper;
+
 /**
  * All Trait
  *
@@ -16,18 +18,13 @@ trait AllTrait
     abstract protected function endpoint($end = null);
 
     /**
-     * @return Lamesya\Freshdesk\Http\FreshdeskClient
-     */
-    abstract protected function api();
-
-    /**
      * Get a list of all resources
      * 
-     * @param null array $query
-     * @return array|null
+     * @param array $options
+     * @return Response
      */
-    public function all(array $query = null)
+    public function all(array $options = [])
     {
-        return $this->api()->get($this->endpoint(), $query);
+        return $this->request->get($this->endpoint(), $options);
     }
 }

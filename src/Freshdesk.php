@@ -14,6 +14,7 @@ use Lamesya\Freshdesk\Resources\TicketField;
 use Lamesya\Freshdesk\Resources\TicketForm;
 use Lamesya\Freshdesk\Resources\TimeEntry;
 use Lamesya\Freshdesk\Http\FreshdeskClient;
+use Lamesya\Freshdesk\Http\Request;
 
 /**
  * @method Agent agent()
@@ -62,7 +63,7 @@ class Freshdesk
     public function __construct($token = '', $uri = '')
     {
         $this->token = $token;
-        $this->baseURI = $uri;
+        $this->baseURI = sprintf('%s/api/v2', $uri);
     }
 
     /**
@@ -75,7 +76,7 @@ class Freshdesk
     {
         $class = $this->resolveClassPath($resource);
 
-        return new $class($this->getClient());
+        return new $class($this->getRequest());
     }
 
     /**
@@ -87,6 +88,16 @@ class Freshdesk
     protected function resolveClassPath($resource)
     {
         return 'Lamesya\\Freshdesk\\Resources\\' . Str::studly($resource);
+    }
+
+    /**
+     * Get the request instance.
+     *
+     * @return Request
+     */
+    public function getRequest()
+    {
+        return new Request($this->getClient());
     }
 
     /**

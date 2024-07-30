@@ -2,9 +2,8 @@
 
 namespace Lamesya\Freshdesk;
 
-use Exception;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Foundation\AliasLoader;
+use Lamesya\Freshdesk\Exceptions\FreshdeskException;
 
 class FreshdeskServiceProvider extends ServiceProvider
 {
@@ -14,16 +13,16 @@ class FreshdeskServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->booting( function () {
-            $loader = AliasLoader::getInstance();
+            $loader = \Illuminate\Foundation\AliasLoader::getInstance();
             $loader->alias( 'Freshdesk', 'Lamesya\Freshdesk\FreshdeskFacade' );
         } );
 
         $this->app->singleton(Freshdesk::class, function ($app) {
-            $apiKey = $app['config']->get('services.freshdesk.api_key');
+            $apiKey = $app['config']->get('services.freshdesk.key');
             $domain = $app['config']->get('services.freshdesk.domain');
 
             if (! $apiKey) {
-                throw new Exception('Freshdesk was not configured in services.php configuration file.');
+                throw new FreshdeskException('Freshdesk was not configured in services.php configuration file.');
             }
 
             return new Freshdesk($apiKey, $domain);

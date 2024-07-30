@@ -16,11 +16,6 @@ trait ViewTrait
     abstract protected function endpoint($end = null);
 
     /**
-     * @return Lamesya\Freshdesk\Freshdesk
-     */
-    abstract protected function api();
-
-    /**
      * Update a resource
      * 
      * @param int $id
@@ -29,6 +24,6 @@ trait ViewTrait
      */
     public function view($id, array $query = null)
     {
-        return $this->api()->get($this->endpoint($id), null, $query);
+        return $this->request->get($this->endpoint($id), $query);
     }
 }
