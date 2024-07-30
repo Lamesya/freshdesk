@@ -39,7 +39,7 @@ class Ticket extends AbstractResource
     }
 
     /**
-     * List conversations associated with a ticket
+     * List All Conversations of a Ticket
      * 
      * @param int $id The ticket id
      * @param array|null $query
@@ -49,6 +49,48 @@ class Ticket extends AbstractResource
     {
         $end = sprintf('%s/conversations', $id);
 
-        return $this->api()->request('GET', $this->endpoint($end), null, $query);
+        return $this->api()->get($this->endpoint($end), $query);
+    }
+
+    /**
+     * List All Time Entries of a Ticket
+     * 
+     * @param int $id The ticket id
+     * @param array|null $query
+     * @return mixed|null
+     */
+    public function time_entries($id, array $query = null)
+    {
+        $end = sprintf('%s/time_entries', $id);
+
+        return $this->api()->get($this->endpoint($end), $query);
+    }
+
+    /**
+     * List All Satisfaction Ratings of a Ticket
+     * 
+     * @param int $id The ticket id
+     * @param array|null $query
+     * @return mixed|null
+     */
+    public function satisfaction_ratings($id, array $query = null)
+    {
+        $end = sprintf('%s/satisfaction_ratings', $id);
+
+        return $this->api()->get($this->endpoint($end), $query);
+    }
+
+    /**
+     * Ticket Summary
+     * 
+     * @param int $id The ticket id
+     * @param array|null $query
+     * @return mixed|null
+     */
+    public function summary($id)
+    {
+        $end = sprintf('%s/summary', $id);
+
+        return $this->api()->get($this->endpoint($end));
     }
 }
