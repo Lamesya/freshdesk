@@ -2,9 +2,8 @@
 
 namespace Lamesya\Freshdesk\Resources;
 
-use Lamesya\Freshdesk\Resources\AbstractResource;
+use Lamesya\Freshdesk\Resources\Resource;
 use Lamesya\Freshdesk\Resources\Traits\AllTrait;
-use Lamesya\Freshdesk\Resources\Traits\CreateTrait;
 use Lamesya\Freshdesk\Resources\Traits\DeleteTrait;
 use Lamesya\Freshdesk\Resources\Traits\UpdateTrait;
 use Lamesya\Freshdesk\Resources\Traits\ViewTrait;
@@ -14,7 +13,7 @@ use Lamesya\Freshdesk\Resources\Traits\ViewTrait;
  * 
  * @package Lamesya\Freshdesk\Resources
  */
-class TimeEntry extends AbstractResource
+class TimeEntry extends Resource
 {
     use AllTrait, ViewTrait, UpdateTrait, DeleteTrait;
 
@@ -35,6 +34,6 @@ class TimeEntry extends AbstractResource
     {
         $end = sprintf('tickets/%s/time_entries', $id);
 
-        return $this->api()->post($this->endpoint($end), $data);
+        return $this->request->post($this->endpoint($end), $data);
     }
 }
