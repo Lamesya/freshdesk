@@ -60,10 +60,10 @@ class Freshdesk
      * @param $apiKey
      * @param $domain
      */
-    public function __construct($token = '', $uri = '')
+    public function __construct($token = '', $domain = '')
     {
         $this->token = $token;
-        $this->baseURI = sprintf('%s/api/v2', $uri);
+        $this->baseURI = sprintf('https://%s.freshdesk.com/api/v2/', $domain);
     }
 
     /**

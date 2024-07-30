@@ -23,5 +23,5 @@ class TicketForm extends Resource
      *
      * @var string
      */
-    protected $endpoint = 'ticket_forms';
+    protected $endpoint = 'ticket-forms';
 }

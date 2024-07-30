@@ -30,8 +30,7 @@ class Request
      */
     public function __call($name, $args = [])
     {
-        if (in_array($name, ['get', 'post', 'put', 'patch', 'delete']))
-        {
+        if (in_array($name, ['get', 'post', 'put', 'patch', 'delete'])) {
             return call_user_func_array([$this->client, $name], $args);
         }
     }
